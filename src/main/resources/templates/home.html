@@ -4,25 +4,9 @@
 <header th:replace="/layout/header :: header"></header>
 <br><br>
 
-<a th:href="@{/categories/list}">Add Category</a>
+<a th:href="@{/categories}">See Categories</a>
+
 <br><br>
-<table>
-    <tr>
-        <th>STT</th>
-        <th>Category name</th>
-        <th>Image</th>
-    </tr>
-
-    <tbody>
-    <tbody>
-    <tr th:each="category, iterStat : ${list}">
-        <td th:text="${iterStat.count}"></td>
-        <td th:text="${category.categoryname}"></td>
-    </tr>
-    </tbody>
-</table>
-
-<br>
 <footer th:replace="/layout/footer :: footer"></footer>
 </body>
 </html>

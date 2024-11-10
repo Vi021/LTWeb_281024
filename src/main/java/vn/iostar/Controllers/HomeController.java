@@ -22,33 +22,34 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(ModelMap model) {
-        long count = catService.count();
-        int currentPage = 1;
-        int pageSize = 10;
-
-        Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("categoryName"));
-        Page<Category> resultPage = catService.findAll(pageable);
-        int totalPages = resultPage.getTotalPages();
-
-        if (totalPages > 0) {
-            long start = Math.max(1, currentPage - 2);
-            long end = Math.min(currentPage + 2, totalPages);
-
-            if (totalPages > count) {
-                if (end == totalPages)
-                {
-                    start = end - count;
-                }
-                else if (start == 1) {
-                    end = start + count;
-                }
-            }
-
-            List<Long> pageNumbers = LongStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
-        }
-
-        model.addAttribute("categoryPage", resultPage);
+//        long count = catService.count();
+//        int currentPage = 1;
+//        int pageSize = 10;
+//
+//        Pageable pageable = PageRequest.of(0, pageSize, Sort.by("categoryName"));
+//        Page<Category> resultPage = catService.findAll(pageable);
+//
+//        int totalPages = resultPage.getTotalPages();
+//        if (totalPages > 0) {
+//            long start = 1;
+//            long end = Math.min(currentPage + 2, totalPages);
+//
+//            if (totalPages > count) {
+//                if (end == totalPages)
+//                {
+//                    start = end - count;
+//                }
+//                else {
+//                    end = start + count;
+//                }
+//            }
+//
+//            List<Long> pageNumbers = LongStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
+//            model.addAttribute("pageNumbers", pageNumbers);
+//        }
+//
+//        model.addAttribute("categoryPage", resultPage);
+//        return "category/list";
         return "home";
     }
 }

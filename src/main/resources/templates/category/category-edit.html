@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:replace="/layout/header :: header"></header>
+<br><br>
+
+<form action="#" th:action="@{/category/edit/{id}(id=${category.id})}" th:object="${category}" method="post">
+    <label for="name">Name</label>
+    <br>
+    <input type="text" th:field="*{categoryName}" id="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}"></span>
+    <br><br>
+    <label for="image">Img</label>
+    <br>
+    <input type="text" th:field="*{categoryImage}" id="image" placeholder="Link">
+    <span th:if="${#fields.hasErrors('categoryImage')}" th:errors="*{categoryImage}"></span>
+    <input type="submit" value="Edit Category">
+</form>
+
+<br><br>
+<footer th:replace="/layout/footer :: footer"></footer>
+</body>
+</html>
